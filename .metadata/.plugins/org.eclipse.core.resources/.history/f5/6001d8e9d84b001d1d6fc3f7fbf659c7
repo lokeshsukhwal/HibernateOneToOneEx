@@ -1,0 +1,29 @@
+package com.app.lokesh.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
+@Entity
+@Table
+public class Customer {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer customerId;
+	@NonNull
+	private String customerName;
+	
+	@OneToMany
+	@JoinColumn(name = "orderFK")
+	private Order order;
+}

@@ -1,0 +1,38 @@
+package com.app.lokesh.runner;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.app.lokesh.entity.Author;
+import com.app.lokesh.entity.Book;
+import com.app.lokesh.repository.AuthorRepository;
+import com.app.lokesh.repository.BookRepository;
+
+
+@Component
+public class TestRunner implements CommandLineRunner {
+	@Autowired
+	private BookRepository bRepository;
+	@Autowired
+	private AuthorRepository aRepository;
+
+	@Override
+	public void run(String... args) throws Exception {
+		Author a1 = new Author(1001, "lokesh");		
+		aRepository.save(a1);
+		
+		bRepository.saveAll(
+				List.of(
+				new Book(10,"SBMS",600.0,a1),
+				new Book(11,"UI",300.0,a1),
+				new Book(12,"Adv",400.0,a1),
+				new Book(13,"CORE",500.0,a1)
+				)
+			);		
+		
+
+	}
+}

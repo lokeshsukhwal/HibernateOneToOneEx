@@ -1,0 +1,6 @@
+package com.app.lokesh.entity;
+
+public class Author {
+	private Integer authorId;
+	private String  authorName;
+}

@@ -1,0 +1,38 @@
+package com.app.lokesh.runner;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
+import com.app.lokesh.entity.Department;
+import com.app.lokesh.entity.Employee;
+import com.app.lokesh.repository.DepartmentRepository;
+import com.app.lokesh.repository.EmployeeRepository;
+
+
+@Component
+public class TestRunner implements CommandLineRunner {
+	@Autowired
+	private EmployeeRepository empRepository;
+	@Autowired
+	private DepartmentRepository deptRepository;
+
+	@Override
+	public void run(String... args) throws Exception {
+		Department dev = new Department(100154,"DEV","LOKESH");
+		deptRepository.save(dev);
+		
+		//Department d1 = repo.findById(1053).get();
+		
+		empRepository.saveAll(
+				List.of(
+						new Employee(10, "MUKESH", 75000.0, dev),
+						new Employee(11, "RAM", 65000.0, dev),
+						new Employee(12, "DESHRAJ", 58000.0, dev)
+						)
+				);	
+
+	}
+}

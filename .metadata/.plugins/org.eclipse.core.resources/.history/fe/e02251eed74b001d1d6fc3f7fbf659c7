@@ -1,0 +1,22 @@
+package com.app.lokesh.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
+@Entity
+@Table
+public class Order {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer orderId;
+	private String orderName;
+	private Integer orderQuantity;
+}
